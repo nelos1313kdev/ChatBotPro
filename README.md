@@ -1,36 +1,74 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# ChatGPT Pro
 
-## Getting Started
+A modern web application that provides an AI-powered chatbot with undetectable text generation capabilities.
 
-First, run the development server:
+## Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- AI-powered chatbot with natural language processing
+- Undetectable text generation algorithm
+- User authentication and authorization
+- Subscription management with Stripe integration
+- Free trial with 3 prompts
+- Modern and responsive UI
+
+## Prerequisites
+
+- Node.js 18.x or later
+- PostgreSQL database
+- Stripe account
+- OpenAI API key
+
+## Environment Variables
+
+Create a `.env` file in the root directory with the following variables:
+
+```env
+DATABASE_URL="postgresql://user:password@localhost:5432/chatgpt_pro"
+NEXTAUTH_SECRET="your-secret-key"
+NEXTAUTH_URL="http://localhost:3000"
+STRIPE_SECRET_KEY="your-stripe-secret-key"
+STRIPE_WEBHOOK_SECRET="your-stripe-webhook-secret"
+NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY="your-stripe-publishable-key"
+STRIPE_PRICE_ID="your-stripe-price-id"
+OPENAI_API_KEY="your-openai-api-key"
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Installation
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+1. Clone the repository:
+```bash
+git clone https://github.com/yourusername/chatgpt-pro.git
+cd chatgpt-pro
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+2. Install dependencies:
+```bash
+npm install
+```
 
-## Learn More
+3. Set up the database:
+```bash
+npx prisma migrate dev
+```
 
-To learn more about Next.js, take a look at the following resources:
+4. Start the development server:
+```bash
+npm run dev
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+The application will be available at `http://localhost:3000`.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Stripe Setup
 
-## Deploy on Vercel
+1. Create a Stripe account at https://stripe.com
+2. Create a product and price in the Stripe dashboard
+3. Set up webhooks in the Stripe dashboard:
+   - Endpoint URL: `https://your-domain.com/api/webhooks/stripe`
+   - Events to listen for:
+     - `checkout.session.completed`
+     - `customer.subscription.updated`
+     - `customer.subscription.deleted`
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## License
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+This project is licensed under the MIT License - see the LICENSE file for details.
