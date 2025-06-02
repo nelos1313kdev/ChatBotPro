@@ -55,7 +55,7 @@ npx prisma migrate dev
 ```bash
 npm run dev
 ```
-
+okay
 The application will be available at `http://localhost:3000`.
 
 ## Stripe Setup
